@@ -1,0 +1,47 @@
+.landing {
+  /* background-image: url("https://i.imgur.com/MubfpG8.png"); */
+  background-image: url("../images/MubfpG8.png");
+  background-size: cover;
+}
+#space {
+  width: 600px;
+}
+
+.signIn {
+  background-color: rgba(138, 43, 226, 0.25);
+  margin: auto;
+  border-radius: 8px;
+  height: 20vh;
+  width: 50vw;
+}
+
+.signInButton {
+  margin: auto;
+  border-radius: 8px;
+}
+
+#navBarSignOut :hover {
+  background-color: blue;
+}
+
+#ratingbar {
+  background-color: red;
+  border-radius: 13px;
+  position: relative;
+  width: 249px;
+}
+
+#ratingbar-percent {
+  background-color: greenyellow;
+  padding: 5px 0px;
+  text-align: center;
+  height: 30px;
+  border-radius: 10px;
+}
+
+#ratingbar-percent span {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}

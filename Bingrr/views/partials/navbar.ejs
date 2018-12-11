@@ -1,0 +1,32 @@
+<ul class="navbar sticky-top" style="border: 1px solid black; background-color: rgba(138, 43, 226, 0.25); margin: 0">
+    <li>
+        <a href="/main">Home</a>
+    </li>
+    <li>
+        <a href="/favorites/movies">Your Movies</a>
+    </li>
+    <li>
+        <a href="/favorites/shows">Your Shows</a>
+    </li>
+    <li >
+        <form action="/search" method="POST">
+            <div class="input-group">
+                <input name="search_query" class="form-control w-50" style="text:.5rem" placeholder="search movies and shows!">
+                <span class="input-group-btn" >
+                    <button class="btn btn-danger">Search!</button>
+                </span>
+            </div>
+        </form>
+    </li>
+    <li>
+        <div class="input-group">
+            <form action="/session" method="POST" >
+                <input type="hidden" name="_method" value="DELETE" value="search_query">
+                <button id="navBarSignOut" type="submit">Sign Out as <%=currentUser.userName%></button>
+            </form>
+        </div>
+    </li>
+</ul>
+
+
+

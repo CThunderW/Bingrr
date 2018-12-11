@@ -1,0 +1,66 @@
+#movieDisplayGrid {
+  box-sizing: border-box;
+  display: grid;
+  margin: 0px;
+  grid-gap: 0px;
+  background-color: beige;
+  padding: 0px;
+  height: 100%;
+  grid-template-columns: repeat(12, calc(100% / 12));
+  grid-template-rows: repeat(12, calc(85vh / 12));
+  overflow: auto;
+}
+
+#movieDisplayGrid > div {
+  display: grid;
+}
+
+#movie-top {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  overflow: scroll;
+  border: 1px solid lightslategray;
+  background-color: rgba(248, 248, 255, 0.6);
+}
+#movie-pic {
+  grid-column-start: 8;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  margin: 5px 5px 5px 10px;
+  max-height: 100%;
+  border: 0px;
+}
+#movie-pic > img {
+  max-height: 100%;
+  display: flex;
+  margin: auto;
+}
+#movie-details {
+  background-color: limegreen;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 6;
+  grid-row-end: 10;
+  font-size: 40%;
+}
+#cast {
+  background-color: orange;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 10;
+  grid-row-end: 13;
+  overflow: scroll;
+  max-height: 100%;
+}
+
+h5 {
+  margin: 10px;
+  height: 30px;
+}
+h6 {
+  margin: 10px;
+  height: 20px;
+}

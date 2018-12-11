@@ -1,0 +1,28 @@
+nav {
+  padding: 4px;
+  margin: 0;
+  height: 10vh;
+}
+#navContainer {
+  background-color: #888888;
+  width: 98%;
+  margin: auto;
+}
+/* #navContainer > li {
+  display: inline-block;
+} */
+
+nav > ul > li {
+  display: inline;
+  margin-right: 10px;
+  font-size: 1.8em;
+}
+
+nav > ul > li > a {
+  color: whitesmoke;
+}
+form {
+  padding: 0px;
+  margin: 0px;
+  margin-top: -10px;
+}

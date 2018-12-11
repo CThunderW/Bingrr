@@ -1,0 +1,15 @@
+.credits-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px;
+}
+
+.title-card {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.container-details {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}

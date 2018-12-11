@@ -1,0 +1,21 @@
+.vertical-center {
+  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+  background-color: blueviolet;
+}
+#ratingbar {
+  background-color: black;
+  border-radius: 13px;
+  height: 40px;
+  padding: 3px;
+}
+
+#ratingbar > div {
+  background-color: greenyellow;
+  width: Javascript;
+  height: 20px;
+  border-radius: 10px;
+}

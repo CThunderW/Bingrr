@@ -1,0 +1,84 @@
+#personDisplayGrid {
+  box-sizing: border-box;
+  display: grid;
+  margin: 0px;
+  grid-gap: 0px;
+  background-color: beige;
+  padding: 0px;
+  height: 100%;
+  grid-template-columns: repeat(12, calc(100% / 12));
+  grid-template-rows: repeat(12, calc(85vh / 12));
+  overflow: auto;
+}
+
+#personDisplayGrid > div {
+  display: grid;
+}
+
+#person-top {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  overflow: scroll;
+  border: 1px solid lightslategray;
+  background-color: rgba(248, 248, 255, 0.6);
+}
+#person-pic {
+  grid-column-start: 8;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 6;
+  margin: 5px 5px 5px 10px;
+  max-height: 100%;
+  border: 0px;
+}
+#person-pic > img {
+  max-height: 100%;
+  display: flex;
+  margin: auto;
+}
+#person-details {
+  background-color: limegreen;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 6;
+  grid-row-end: 10;
+  font-size: 40%;
+}
+#credits {
+  background-color: orange;
+  grid-column-start: 1;
+  grid-column-end: 13;
+  grid-row-start: 10;
+  grid-row-end: 13;
+  overflow: scroll;
+  max-height: 300px;
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px; */
+}
+
+h5 {
+  margin: 10px;
+  height: 30px;
+}
+h6 {
+  margin: 10px;
+  height: 20px;
+}
+#credits-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px;
+}
+
+.title-card {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.container-details {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}

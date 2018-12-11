@@ -1,0 +1,29 @@
+#popularMovies {
+  background-color: rgba(255, 255, 255, 0.6);
+
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding: 4px;
+}
+
+#popularTV {
+  background-color: rgba(255, 255, 255, 0.6);
+
+  list-style-type: none;
+
+  padding: 4px;
+}
+
+.container-single {
+  margin: 0px;
+}
+
+#popularTV > li {
+  width: 90%;
+  margin-bottom: 2px;
+}
+
+#popularMovies > li {
+  width: 90%;
+  margin-bottom: 2px;
+}

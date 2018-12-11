@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app1 {
+  grid-area: nav;
+}
+.app2 {
+  grid-area: left;
+}
+.app3 {
+  grid-area: main;
+  padding: 0px;
+}
+.app4 {
+  grid-area: right;
+}
+.app5 {
+  grid-area: footer;
+}
+
+.grid-container {
+  justify-content: center;
+  margin: auto;
+  width: 100vw;
+  display: grid;
+  grid-template-areas:
+    "nav nav nav nav nav nav nav nav nav nav nav nav"
+    "left left left main main main main main main right right right"
+    "footer footer footer footer footer footer footer footer footer footer footer footer";
+  grid-template-columns: repeat(12, calc(90vw / 12));
+
+  grid-gap: 6px;
+  background-color: paleturquoise;
+  padding: 3px;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+
+  /* font-size: 30px; */
+}
+
+* {
+  border-radius: 2px;
+  margin: 1px;
+  font-family: "Dosis", sans-serif;
+}
+
+.app3 > div {
+  height: 100%;
+}
+.app1 > div {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.app4 > div {
+  grid-area: right;
+  background-color: paleturquoise;
+  height: 100%;
+  width: 100%;
+}
+.app2 > div {
+  grid-area: left;
+  background-color: paleturquoise;
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+.small-result {
+  text-align: center;
+  border: 0.5px solid lightgrey;
+  padding: 1px;
+  margin: 1px;
+  width: 20vw;
+  font-size: 11px;
+  margin: auto;
+}
+
+#ratingbar {
+  background-color: red;
+  border-radius: 13px;
+  position: relative;
+  height: 8px;
+  width: 50%;
+}
+
+#ratingbar-percent {
+  background-color: greenyellow;
+  text-align: center;
+  height: 30px;
+  border-radius: 10px;
+  height: 8px;
+  margin-left: 0px;
+  font-size: 1vh;
+  position: relative;
+}
+
+#ratingbar-percent span {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}

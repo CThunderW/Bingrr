@@ -1,0 +1,17 @@
+
+<%- include("../partials/header") %>
+<script src="/scripts/guestMainScript.js" type="text/javascript"></script>
+
+<div class="guest-container">
+Guest Test Page
+<hr>
+    <img class="poster"></div>
+    <h1><p class="title"></p></h1>
+    <h3><p class="plot"></p></h3>
+    <p class="year"></p>
+
+    <p class="seasons"></p>
+    <p class="actors"></p>
+</div>
+
+<%- include("../partials/footer") %>
