@@ -2,9 +2,6 @@ const User = require("../models/user");
 const validator = require("validator");
 
 module.exports = {
-  // new(req, res) {
-  //   res.render("session/new");
-  // },
   async create(req, res, next) {
     const { userName, password } = req.body;
     console.log(typeof req.body);
@@ -19,7 +16,7 @@ module.exports = {
         user = await User.find("userName", userName);
       }
       console.log("foundUser: ", user);
-      if (user) {
+      if (user && (await user.authenticate(password))) {
         req.session.userId = user.id;
         req.session.save();
         const { id, email, userName } = user;
@@ -35,29 +32,8 @@ module.exports = {
     }
   },
   destroy(req, res) {
-    req.session.userID = undefined;
+    req.session.userId = undefined;
+    console.log("Signed out?: ", req.session.userId);
     res.json({});
   }
 };
-
-//       const user = await User.findByEmail(username);
-
-//       if (user && (await user.authenticate(password))) {
-//         req.session.userId = user.id;
-
-//         // req.flash("success", `Welcome back, ${user.userName}!`);
-//         res.redirect("/main");
-//       } else {
-//         // req.flash("danger", "Invalid Email or Password");
-//         res.render("session/new");
-//       }
-//     } catch (error) {
-//       next(error);
-//     }
-//   },
-//   destroy(req, res) {
-//     req.session.userId = undefined;
-
-//     res.redirect("/");
-//   }
-// };

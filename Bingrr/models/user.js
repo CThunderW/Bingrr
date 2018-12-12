@@ -18,10 +18,6 @@ class User {
     this.createdAt = createdAt;
   }
 
-  // static creates a class method
-  // The method is a propert of the class object
-  // You use it like so: User.find(10)
-  // def self.find(id)
   static async find(type, input) {
     const userRaw = await knex("users")
       .where(`${type}`, input)
@@ -63,9 +59,7 @@ class User {
     return this;
   }
 
-  static async authenticate(password) {
-    if (!password || !this.passwordDigest) return false;
-
+  async authenticate(password) {
     return bcrypt.compare(password, this.passwordDigest);
   }
 }

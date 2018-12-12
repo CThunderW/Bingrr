@@ -13,16 +13,23 @@ import $ from "jquery";
 import SignInPage from "../SignInPage/SignInPage";
 import { User, Session } from "../../requests";
 import Person from "../Person/Person";
+import PropTypes from "prop-types";
+
 // import { navigate } from "@reach/router/lib/history";
 
 // add function to fetch to search component
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = { searchTerm: "", currentUser: undefined };
     this.getUser = this.getUser.bind(this);
-    this.destroySession = this.destroySession.bind(this);
+    // this.destroySession = this.destroySession.bind(this);
   }
+  // destroySession = () => {
+  //   fetch("http://localhost:4321/session", { method: "DELETE" });
+  //   this.setState({ currentUser: {} });
+  // };
   destroySession() {
     Session.destroy().then(() => this.setState({ currentUser: null }));
   }
@@ -69,6 +76,7 @@ class App extends Component {
           <NavBar
             currentUser={currentUser}
             searchChangeHandler={this.searchChangeHandler.bind(this)}
+            destroySession={this.destroySession}
           />
         </div>
         <div className="app2">
@@ -97,13 +105,8 @@ class App extends Component {
 
 export default App;
 
-{
-  /* <div className="container">
-<NavBar />
-<Router>
-  <Home path="/" />
-  <Movie path="movie/:id" />
-  <Show path="tv/:id" />
-</Router>
-</div> */
-}
+NavBar.propTypes = {
+  currentUser: PropTypes.object,
+  username: PropTypes.string,
+  destroySession: PropTypes.func
+};

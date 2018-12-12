@@ -25,14 +25,18 @@ router.delete("/session", sessionController.destroy);
 
 // SEARCH ROUTES
 // router.get("/search", searchController.search);
-router.get("/main", cache.route({ expire: 1000 }), searchController.indexLists);
+// router.get("/main", cache.route({ expire: 1000 }), searchController.indexLists);
+router.get("/main", searchController.indexLists);
 router.post("/search", cache.route({ expire: 1000 }), searchController.search);
-router.get(
-  "/movie/:id",
-  cache.route({ expire: 1000 }),
-  searchController.movieShow
-);
-router.get("/tv/:id", cache.route({ expire: 1000 }), searchController.tvShow);
+// router.get(
+//   "/movie/:id",
+//   cache.route({ expire: 1000 }),
+//   searchController.movieShow
+// );
+router.get("/movie/:id", searchController.movieShow);
+// router.get("/tv/:id", cache.route({ expire: 1000 }), searchController.tvShow);
+router.get("/tv/:id", searchController.tvShow);
+
 router.get(
   "/person/:id",
   cache.route({ expire: 1000 }),

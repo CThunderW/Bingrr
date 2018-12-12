@@ -18,7 +18,13 @@ class NavBar extends Component {
       <div id="navContainer">
         <nav className="navBar">
           <ul>
-            <li>{currentUserName && currentUserName.userName}</li>
+            {currentUserName && (
+              <li>
+                <button color="link" onClick={this.props.destroySession}>
+                  Logout from {currentUserName.userName}
+                </button>
+              </li>
+            )}
             <li className="navBar">
               <a href="/">Home</a>
             </li>

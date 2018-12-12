@@ -103,7 +103,7 @@ export const Session = {
         "Access-Control-Allow-Credentials": true
       }
     }).then(res => {
-      return res.json();
+      res.json();
     });
   }
 };
