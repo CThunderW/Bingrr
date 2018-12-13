@@ -14,6 +14,7 @@ export default class SignInPage extends Component {
 
   createSession = async event => {
     event.preventDefault();
+    console.log("line 17: ", this.props.history);
     const {
       userName: { value: userName },
       password: { value: password }
@@ -41,7 +42,7 @@ export default class SignInPage extends Component {
     if (typeof this.props.onSignIn === "function") {
       this.props.onSignIn();
     }
-    props.history.push("/");
+    this.props.history.push("/");
   };
   render() {
     return (
