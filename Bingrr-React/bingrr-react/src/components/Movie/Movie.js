@@ -28,7 +28,7 @@ class Movie extends Component {
   }
   render() {
     let { movieResult, credits } = this.state;
-    console.log(credits);
+    // console.log(credits);
     return !movieResult ? (
       <div>Loading...</div>
     ) : (

@@ -72,7 +72,6 @@ module.exports = {
     const promiseArray = [axios.get(searchKey), axios.get(movieCast)];
     const [{ data: singleData }, cast] = await Promise.all(promiseArray);
     const credits = cast.data.cast;
-    console.log("search line 53: " + cast.data);
     console.log("first cast: " + credits[0].name);
     res.send({ singleData, credits });
   },
@@ -86,7 +85,7 @@ module.exports = {
     const promiseArray = [axios.get(searchKey), axios.get(tvCast)];
     const [{ data: singleData }, cast] = await Promise.all(promiseArray);
     const credits = cast.data.cast;
-    console.log("credits: ", credits);
+    // console.log("credits: ", credits);
     console.log("search line 67: " + cast.data);
     console.log("first cast: " + credits[0].name);
     res.send({ singleData, credits });

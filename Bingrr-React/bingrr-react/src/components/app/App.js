@@ -22,14 +22,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchTerm: "", currentUser: undefined };
+    this.state = { searchTerm: "", currentUser: null };
     this.getUser = this.getUser.bind(this);
-    // this.destroySession = this.destroySession.bind(this);
+    this.destroySession = this.destroySession.bind(this);
   }
-  // destroySession = () => {
-  //   fetch("http://localhost:4321/session", { method: "DELETE" });
-  //   this.setState({ currentUser: {} });
-  // };
+
   destroySession() {
     Session.destroy().then(() => this.setState({ currentUser: null }));
   }
@@ -53,7 +50,9 @@ class App extends Component {
       }
     }).then(res => res.json());
     console.log("app.js 48: ", currentUser);
-    if (currentUser) this.setState({ currentUser });
+    if (currentUser.id) {
+      this.setState({ currentUser });
+    }
   }
   //   User.current().then(currentUser => {
   //     if (currentUser.id) {
@@ -76,7 +75,7 @@ class App extends Component {
           <NavBar
             currentUser={currentUser}
             searchChangeHandler={this.searchChangeHandler.bind(this)}
-            destroySession={this.destroySession}
+            onSignOut={this.destroySession}
           />
         </div>
         <div className="app2">
