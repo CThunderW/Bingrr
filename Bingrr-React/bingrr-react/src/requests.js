@@ -38,8 +38,9 @@ export const Trending = {
 };
 
 export const Cast = {
-  getCast(id) {
-    return fetch(`${BASE_URL}/tv/${id}`, {
+  getCast(mediaType, id) {
+    console.log("backend: ", `${BASE_URL}/${mediaType}/${id}`);
+    return fetch(`${BASE_URL}/${mediaType}/${id}`, {
       credentials: "include",
       headers: {
         Accept: "application/json",

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../Home/Home";
 import "./App.css";
 import Movie from "../Movie/Movie";
 import Show from "../Show/Show";
-import { Router, navigate } from "@reach/router";
+// import { Router, navigate } from "@reach/router";
 import NavBar from "../NavBar/NavBar";
 import SideBar from "../SideBar/SideBar";
 import Landing from "../Landing/Landing";
 import CastList from "../CastList/CastList";
 import SearchIndex from "../SearchIndex/SearchIndex";
-import $ from "jquery";
+// import $ from "jquery";
 import SignInPage from "../SignInPage/SignInPage";
 import { User, Session } from "../../requests";
 import Person from "../Person/Person";
@@ -37,7 +38,7 @@ class App extends Component {
     const searchTerm = event.currentTarget.elements.search_query.value;
     console.log(searchTerm);
     this.setState({ searchTerm });
-    navigate(`/search/`);
+    // navigate(`/search/`);
     // boundObject.performSearch(searchTerm);
   }
   async getUser() {
@@ -54,14 +55,6 @@ class App extends Component {
       this.setState({ currentUser });
     }
   }
-  //   User.current().then(currentUser => {
-  //     if (currentUser.id) {
-  //       this.setState({ currentUser, loading: false });
-  //       console.log("currentUser!!!!: ", currentUser);
-  //     }
-  //   });
-  // }
-
   async componentDidMount() {
     await this.getUser();
     console.log("line 61: ", this.state.currentUser);
@@ -70,34 +63,47 @@ class App extends Component {
   render() {
     const { currentUser } = this.state;
     return (
-      <div className="grid-container">
-        <div className="app1">
-          <NavBar
-            currentUser={currentUser}
-            searchChangeHandler={this.searchChangeHandler.bind(this)}
-            onSignOut={this.destroySession}
-          />
+      <BrowserRouter>
+        <div className="grid-container">
+          <div className="app1">
+            <NavBar
+              currentUser={currentUser}
+              searchChangeHandler={this.searchChangeHandler.bind(this)}
+              onSignOut={this.destroySession}
+            />
+          </div>
+          <div className="app2">
+            <SideBar />
+          </div>
+          <div className="app3">
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route
+                exact
+                path="/session"
+                render={routeProps => (
+                  <SignInPage {...routeProps} onSignIn={this.getUser} />
+                )}
+              />
+              <Route
+                exact
+                path="/movie/:id"
+                render={routeProps => (
+                  <Movie {...routeProps} currentUser={currentUser} />
+                )}
+              />
+              {/* // <Route path="/movie/:id" exact={true} component={Movie} /> */}
+              <Route exact={true} path="/tv/:id" component={Show} />
+              <Route exact path="/person/:id" component={Person} />
+              <Route path="/search" searchTerm={this.state.searchTerm} />
+            </Switch>
+          </div>
+          <div className="app4">
+            <SideBar />
+          </div>
+          <div className="app5">Footer</div>
         </div>
-        <div className="app2">
-          <SideBar />
-        </div>
-        <div className="app3">
-          <Router>
-            <Landing path="/" />
-            <SignInPage path="/session" onSignIn={this.getUser} />
-            <Movie path="movie/:id" />
-            <Show path="tv/:id" />
-            <Person path="person/:id" />
-            {this.state.searchTerm && (
-              <SearchIndex path="search" searchTerm={this.state.searchTerm} />
-            )}
-          </Router>
-        </div>
-        <div className="app4">
-          <SideBar />
-        </div>
-        <div className="app5">Footer</div>
-      </div>
+      </BrowserRouter>
     );
   }
 }

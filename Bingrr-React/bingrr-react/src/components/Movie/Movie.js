@@ -4,9 +4,16 @@ import "./Movie.css";
 import CastList from "../CastList/CastList";
 
 class Movie extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = { movieResult: null };
+  }
+
   componentDidMount() {
-    Trending.getMovie(this.props.id).then(result => {
+    console.log("movie mounted: ", this.props);
+    console.log("id param? : ", this.props.match.params.id);
+    const id = this.props.match.params.id;
+    Trending.getMovie(id).then(result => {
       this.setState({
         movieResult: result.singleData,
         credits: result.credits
@@ -14,8 +21,10 @@ class Movie extends Component {
     });
   }
   componentDidUpdate(previousProps) {
-    if (this.props.location.href !== previousProps.location.href) {
-      Trending.getMovie(this.props.id).then(result => {
+    console.log("movie updated: ", this.props);
+    const id = this.props.match.params.id;
+    if (this.props.location.pathname !== previousProps.location.pathname) {
+      Trending.getMovie(id).then(result => {
         this.setState({
           movieResult: result.singleData,
           credits: result.credits
@@ -29,6 +38,7 @@ class Movie extends Component {
   render() {
     let { movieResult, credits } = this.state;
     // console.log(credits);
+    console.log(movieResult);
     return !movieResult ? (
       <div>Loading...</div>
     ) : (
@@ -48,7 +58,7 @@ class Movie extends Component {
         </div>
 
         <div id="cast">
-          <CastList id={movieResult.id} credits={credits} />
+          <CastList id={movieResult.id} credits={credits} mediaType={"movie"} />
         </div>
 
         <div id="movie-details" />

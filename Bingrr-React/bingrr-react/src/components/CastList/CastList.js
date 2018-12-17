@@ -14,10 +14,7 @@ class CastList extends Component {
   }
 
   componentDidMount() {
-    // console.log("CastProps: " + JSON.stringify(this.props));
-    console.log(this.props);
-    Cast.getCast(this.props.id).then(cast => {
-      //   console.log("castReults: " + JSON.stringify.cast);
+    Cast.getCast(this.props.mediaType, this.props.id).then(cast => {
       this.setState({
         cast: cast,
         credits: cast.credits
@@ -26,7 +23,7 @@ class CastList extends Component {
   }
   componentDidUpdate(previousProps) {
     if (this.props !== previousProps) {
-      Cast.getCast(this.props.id).then(cast => {
+      Cast.getCast(this.props.mediaType, this.props.id).then(cast => {
         this.setState({
           cast: cast,
           credits: cast.credits
@@ -39,18 +36,11 @@ class CastList extends Component {
   }
   render() {
     let { cast, credits } = this.state;
-    // let { toSlice = [] } = this.props.credits;
     let toSlice = JSON.stringify(this.props);
-    // let slicy = JSON.stringify(this.state.credits);
-    // console.log("props: " + JSON.stringify(this.props));
     let slicy = { ...JSON.stringify(this.state.credits) };
-    // console.log("slicy: " + toSlice);
     let testo = this.props;
     console.log("testo", testo);
-    // console.log("testo: " + testo);
-    // console.log("2slice: " + slicy);
-    // console.log("Credits: " + this.state.credits);
-    // console.log("45: " + JSON.stringify(this.state.credits));
+
     return (
       <div className="castlist-container">
         {testo.credits &&

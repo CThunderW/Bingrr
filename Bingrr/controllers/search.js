@@ -23,7 +23,7 @@ module.exports = {
     const [movieResultRaw, tvResultRaw] = await Promise.all(promiseArray);
     const movieResult = movieResultRaw.data.results;
     const tvResult = tvResultRaw.data.results;
-    console.log(movieResult);
+    // console.log(movieResult);
     // cachedData.set({ movieResult, tvResult });
     res.send({ movieResult, tvResult });
   },
