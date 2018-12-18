@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { css, jsx } from "@emotion/core";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 import "./TitleCard.css";
 
 const TitleCard = props => (

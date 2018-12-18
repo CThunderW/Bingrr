@@ -5,9 +5,14 @@ import CastList from "../CastList/CastList";
 import SocketChat from "../SocketChat/SocketChat";
 
 class Show extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = { tvResult: null };
+  }
+
   componentDidMount() {
-    Trending.getShow(this.props.id).then(result => {
+    const id = this.props.match.params.id;
+    Trending.getShow(id).then(result => {
       this.setState({
         tvResult: result.singleData,
         credits: result.credits
@@ -15,8 +20,9 @@ class Show extends Component {
     });
   }
   componentDidUpdate(previousProps) {
-    if (this.props.location.href !== previousProps.location.href) {
-      Trending.getShow(this.props.id).then(result => {
+    const id = this.props.match.params.id;
+    if (this.props.location.pathname !== previousProps.location.pathname) {
+      Trending.getShow(id).then(result => {
         this.setState({
           tvResult: result.singleData,
           credits: result.credits
@@ -48,7 +54,7 @@ class Show extends Component {
         </div>
 
         <div id="cast">
-          <CastList id={tvResult.id} credits={credits} />
+          <CastList id={tvResult.id} credits={credits} mediaType={"tv"} />
         </div>
 
         <div id="show-details" />

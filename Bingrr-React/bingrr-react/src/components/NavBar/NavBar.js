@@ -37,9 +37,14 @@ const NavBar = props => {
               </button>
             </>
           ) : (
-            <li>
-              <a href="/session">Sign In!</a>
-            </li>
+            <>
+              <li>
+                <a href="/session">Sign In!</a>
+              </li>
+              <li>
+                <a href="/register">Sign Up!</a>
+              </li>
+            </>
           )}
 
           <li className="navBar">

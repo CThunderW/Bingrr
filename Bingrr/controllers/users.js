@@ -16,12 +16,15 @@ module.exports = {
   },
 
   async create(req, res, next) {
-    const { userName, email, password } = req.body;
+    const { userName, firstName, lastName, email, password } = req.body;
     try {
-      const user = new User({ userName, email, password });
+      const user = new User({ userName, firstName, lastName, email, password });
       await user.save();
       req.session.userId = user.id;
-      res.redirect("/");
+      const { id } = user;
+      const createdUser = { id, email, userName };
+      console.log("line 26: ", createdUser);
+      res.json(createdUser);
     } catch (error) {
       next(error);
     }

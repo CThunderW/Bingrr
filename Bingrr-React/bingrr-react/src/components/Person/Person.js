@@ -5,9 +5,14 @@ import CastList from "../CastList/CastList";
 import Credits from "../Credits/Credits";
 
 class Person extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = { person: null };
+  }
+
   componentDidMount() {
-    Cast.getPerson(this.props.id).then(result => {
+    const id = this.props.match.params.id;
+    Cast.getPerson(id).then(result => {
       this.setState({
         person: result.person,
         credits: result.credits
@@ -15,8 +20,10 @@ class Person extends Component {
     });
   }
   componentDidUpdate(previousProps) {
-    if (this.props.location.href !== previousProps.location.href) {
-      Cast.getPerson(this.props.id).then(result => {
+    const id = this.props.match.params.id;
+
+    if (this.props.location.pathname !== previousProps.location.pathname) {
+      Cast.getPerson(id).then(result => {
         this.setState({
           person: result.person,
           credits: result.credits

@@ -12,6 +12,7 @@ import CastList from "../CastList/CastList";
 import SearchIndex from "../SearchIndex/SearchIndex";
 // import $ from "jquery";
 import SignInPage from "../SignInPage/SignInPage";
+import Register from "../Register/Register";
 import { User, Session } from "../../requests";
 import Person from "../Person/Person";
 import PropTypes from "prop-types";
@@ -78,6 +79,7 @@ class App extends Component {
           <div className="app3">
             <Switch>
               <Route exact path="/" component={Landing} />
+              <Route path="/search" component={SearchIndex} />
               <Route
                 exact
                 path="/session"
@@ -85,6 +87,7 @@ class App extends Component {
                   <SignInPage {...routeProps} onSignIn={this.getUser} />
                 )}
               />
+              <Route exact path="/register" component={Register} />
               <Route
                 exact
                 path="/movie/:id"
@@ -93,7 +96,13 @@ class App extends Component {
                 )}
               />
               {/* // <Route path="/movie/:id" exact={true} component={Movie} /> */}
-              <Route exact={true} path="/tv/:id" component={Show} />
+              <Route
+                exact
+                path="/tv/:id"
+                render={routeProps => (
+                  <Show {...routeProps} currentUser={currentUser} />
+                )}
+              />
               <Route exact path="/person/:id" component={Person} />
               <Route path="/search" searchTerm={this.state.searchTerm} />
             </Switch>
